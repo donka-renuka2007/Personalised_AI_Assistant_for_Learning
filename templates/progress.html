@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Progress - MindCraft</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='agent_chatbot.css') }}">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #00f0ff;
+            font-size: 26px;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00f0ff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #00f0ff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: #00f0ff;
+            color: #0f172a;
+        }
+
+        .progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .progress-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .progress-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 240, 255, 0.4);
+        }
+
+        .topic-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 4px 0;
+        }
+
+        .topic-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        .score-badge {
+            background: rgba(0, 240, 255, 0.15);
+            color: #00f0ff;
+            border: 1px solid #00f0ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #94a3b8;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🎉 Your Quiz Progress</h1>
+        <a href="{{ url_for('home') }}" class="btn-back">← Home</a>
+    </div>
+
+    {% if history %}
+        <div class="progress-list">
+            {% for item in history %}
+                <div class="progress-card">
+                    <div>
+                        <p class="topic-label">QUIZ ATTENDED</p>
+                        <h3 class="topic-title">Topic: {{ item.topic }}</h3>
+                    </div>
+                    <div class="score-badge">
+                        Marks: {{ item.score }} / {{ item.total }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-data">
+            <p>No quizzes attended yet! Take a quiz from the dashboard or upload a PDF to track your results here.</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

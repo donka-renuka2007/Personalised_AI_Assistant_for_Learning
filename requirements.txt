@@ -1,0 +1,9 @@
+flask
+mistralai==0.4.2
+requests
+langgraph
+python-dotenv
+markdown2
+sentence-transformers
+faiss
+pypdf

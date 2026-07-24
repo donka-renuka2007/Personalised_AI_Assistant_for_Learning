@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learning AI Assistant</title>
+    <style>
+      body{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        align-items:center;
+        background-color: aquamarine;
+      }
+      .container{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        column-gap: 20px;
+        row-gap:20px;
+      }
+      .MindCraft-AI,.book_library,.quiz,.progress{
+        display:flex;
+        flex-direction:column;
+        height:200px;
+        width:200px;
+        background-color:aliceblue;
+        cursor:pointer;
+        justify-content: space-between;
+        align-items:center;
+        padding-top:20px;
+        padding-left:20px;
+        padding-right:40px;
+        border:1px solid burlywood;
+        border-radius:20px;
+      }
+      .chatbot-icon,.book_library_icon,.quiz_icon,.progress_icon{
+        height:100px;
+        width:100px;
+        border-radius:20px;
+      }
+      .desc-chatbot,.desc-library,.desc-quiz,.desc-progress{
+        font-size:20px;
+        font-style:italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Personalised AI Assistant for Learning</h1>
+    <div class="container">
+      <a href="{{ url_for('chat_bot') }}" class="card-link">
+        <div class="MindCraft-AI">
+          <img class="chatbot-icon" src="{{ url_for('static', filename='icon_image.png') }}">
+          <p class="desc-chatbot">Chat with AI Personalised Assistant</p>
+        </div>
+      </a>
+      <a href="{{url_for('book_library')}}">
+        <div class="book_library">
+        <img class="book_library_icon" src="../static/library_book.jpg">
+        <p class="desc-library">Get books</p>
+      </div>
+      </a>
+      
+      <a href="{{ url_for('upload_pdf_quiz') }}" style="text-decoration: none; color: inherit;">
+  <div class="quiz">
+    <img class="quiz_icon" src="{{ url_for('static', filename='quiz_image.webp') }}">
+    <p class="desc-quiz">Upload pdf ➡️ Get QUIZ ➡️ test your knowledge</p>
+  </div>
+</a>
+      <a href="{{ url_for('show_progress') }}" style="text-decoration: none; color: inherit;">
+  <div class="progress">
+    <img class="progress_icon" src="{{ url_for('static', filename='progress_image.webp') }}">
+    <p class="desc-progress">See Your Progress🎉</p>
+  </div>
+</a>
+    </div>
+  </body>
+</html>

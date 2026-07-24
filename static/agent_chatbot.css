@@ -1,0 +1,167 @@
+/* ==========================================
+   1. GLOBAL & RESET
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0b0f19;
+  color: #e2e8f0;
+  padding-top: 90px;   /* Clearance for top fixed navbar */
+  padding-bottom: 100px; /* Clearance for bottom fixed input bar */
+  min-height: 100vh;
+}
+
+/* ==========================================
+   2. HEADER / NAVBAR
+   ========================================== */
+.heading {
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #00f0ff;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.heading h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   3. CHAT AREA & MESSAGES
+   ========================================== */
+#chat-box {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 75%;
+}
+
+.chat-container.user-message {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chat-container.bot-message {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.user {
+  background: linear-gradient(135deg, #00f0ff, #0072ff);
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 18px 18px 2px 18px;
+  box-shadow: 0 4px 12px rgba(0, 240, 255, 0.2);
+  font-size: 16px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Assistant Bubble Style (Updated) */
+.message-content {
+  background-color: #1e293b !important;
+  color: #ffffff !important; /* Forces text to bright white */
+  padding: 16px 22px;
+  border-radius: 18px 18px 18px 2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Force inner tags (like <p>, <span>, <li>) to inherit white text */
+.message-content * {
+  color: #ffffff !important;
+}
+
+/* ==========================================
+   4. FIXED INPUT BAR & BUTTON AT BOTTOM
+   ========================================== */
+.input-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0b0f19;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.input-container {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+input {
+  position: relative !important; 
+  flex: 1;
+  padding: 14px 22px;
+  border: 1px solid #00f0ff;
+  border-radius: 30px;
+  background-color: #161f30;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #8a99ad;
+  font-style: italic;
+}
+
+button {
+  position: relative !important;
+  background-color: goldenrod;
+  color: #ffffff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
+  transition: opacity 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  opacity: 0.6;
+}

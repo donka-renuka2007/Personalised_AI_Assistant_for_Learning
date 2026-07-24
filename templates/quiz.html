@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMXJ5r8lhdTXN1aJF53BttIUCVO06MWoGulw43kwPJoJA8GC9MTzpTdsI&s=10');
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            background-attachment: fixed;
+
+        }
+
+        .quiz-container {
+            max-width: 650px;
+            width: 100%;
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .question-card {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        .question-title {
+            font-weight: bold;
+            font-size: 1.05rem;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .option-label {
+            display: block;
+            background: #ffffff;
+            padding: 10px 14px;
+            margin: 6px 0;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .option-label:hover {
+            background: #eef5ff;
+        }
+
+        .option-label input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Practice Quiz</h1>
+
+    <form action="/submit-quiz" method="POST">
+        {% for item in quiz %}
+            {% set q_idx = loop.index0 %}
+            <div class="question-card">
+                <div class="question-title">
+                    {{ loop.index }}. {{ item.question }}
+                </div>
+                
+                {% for option in item.options %}
+                    <label class="option-label">
+                        <input type="radio" name="q_{{ q_idx }}" value="{{ option }}" required>
+                        {{ option }}
+                    </label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+</div>
+
+</body>
+</html>

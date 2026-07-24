@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindCraft AI</title>
+  <meta name="author" content="Renuka Donka">
+  <!-- Favicon using Flask static directory -->
+  <link rel="icon" href="https://www.google.com/imgres?q=mindcraft%20ai&imgurl=https%3A%2F%2Frepository-images.githubusercontent.com%2F679125280%2F9a7dae67-acdd-483f-a6e2-3a690820915d&imgrefurl=https%3A%2F%2Fgithub.com%2Fmindcraft-bots%2Fmindcraft&docid=E2H_J7cVPktkGM&tbnid=_ZlKD2iwN97p-M&vet=12ahUKEwi5kdGgoOmVAxVrT2wGHdx4CSYQnPAOegUIjgEQAA..i&w=1024&h=1024&hcb=2&ved=2ahUKEwi5kdGgoOmVAxVrT2wGHdx4CSYQnPAOegUIjgEQAA" type="image/x-icon">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='agent_chatbot.css') }}">
+</head>
+<body>
+
+  <!-- Fixed Header -->
+  <header class="heading">
+    <h1>MindCraft AI - Personalised AI Assistant For Studying</h1>
+  </header>
+
+  <!-- Chat Messages Area -->
+  <main id="chat-box">
+    {% for msg in chat_history %}
+      {% if msg.role == 'user' %}
+        <div class="chat-container user-message">
+          <div class="user">{{ msg.content }}</div>
+        </div>
+      {% else %}
+        <div class="chat-container bot-message">
+          <div class="message-content">{{ msg.content | safe }}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </main>
+
+  <!-- Fixed Input Bar at Bottom -->
+  <footer class="input-form">
+    <form method="POST" class="input-container">
+      <input type="text" name="query" placeholder="Ask MindCraft AI or type a definition/quiz..." required autocomplete="off">
+      <button type="submit">Send</button>
+    </form>
+  </footer>
+
+</body>
+</html>
