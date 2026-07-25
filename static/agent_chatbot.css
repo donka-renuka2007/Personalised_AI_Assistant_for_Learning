@@ -7,21 +7,19 @@
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 body {
-  background-color: #0b0f19;
-  color: #e2e8f0;
-  padding-top: 90px;   /* Clearance for top fixed navbar */
-  padding-bottom: 100px; /* Clearance for bottom fixed input bar */
+  background-color:white;
+  box-shadow:inset 5px 5px 10px #885CE6;
+  padding-top: 90px;                /* Clearance for top fixed navbar */
+  padding-bottom: 100px;            /* Clearance for bottom fixed input bar */
   min-height: 100vh;
 }
-
 /* ==========================================
    2. HEADER / NAVBAR
    ========================================== */
 .heading {
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(10px);
+  background-color:#885CE6;
+
   padding: 18px 30px;
   display: flex;
   align-items: center;
@@ -30,7 +28,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  color: #00f0ff;
+  color: white;
   border-bottom: 1px solid rgba(0, 240, 255, 0.2);
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -109,7 +107,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #0b0f19;
+  background:whitesmoke;
   padding: 15px 20px;
   display: flex;
   justify-content: center;
@@ -130,22 +128,23 @@ input {
   position: relative !important; 
   flex: 1;
   padding: 14px 22px;
-  border: 1px solid #00f0ff;
+  border: 1px solid #885CE6;
+  box-shadow:5px 10px 10px #885CE6;
   border-radius: 30px;
-  background-color: #161f30;
-  color: #ffffff;
+  background-color: whitesmoke;
+  color: black;
   font-size: 15px;
   outline: none;
 }
 
 input::placeholder {
-  color: #8a99ad;
+  color: black;
   font-style: italic;
 }
 
 button {
   position: relative !important;
-  background-color: goldenrod;
+  background-color: #885CE6;
   color: #ffffff;
   padding: 14px 28px;
   border: none;

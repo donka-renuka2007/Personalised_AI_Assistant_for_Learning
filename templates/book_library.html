@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='agent_chatbot.css') }}">
     <style>
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color:#cbb4fc;
+            color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
@@ -30,23 +30,23 @@
 
         .header h1 {
             margin: 0;
-            color: #00f0ff;
+            color: white;
             font-size: 28px;
         }
 
         .btn-back {
             background: rgba(255, 255, 255, 0.1);
-            color: #00f0ff;
+            color: white;
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 6px;
-            border: 1px solid #00f0ff;
+            border: 1px solid white;;
             font-size: 14px;
             transition: all 0.3s ease;
         }
 
         .btn-back:hover {
-            background: #00f0ff;
+            background: white;
             color: #0f172a;
         }
 
@@ -64,19 +64,19 @@
             padding: 12px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            background:white;
+            color:black;
             font-size: 15px;
         }
 
         .search-box input[type="text"]:focus {
             outline: none;
-            border-color: #00f0ff;
+            border-color: #885CE6;
         }
 
         .search-box button {
             padding: 12px 24px;
-            background: #00f0ff;
+            background:white;
             border: none;
             border-radius: 8px;
             color: #0f172a;
@@ -86,7 +86,7 @@
         }
 
         .search-box button:hover {
-            background: #00c8d6;
+            background:#885CE6;
         }
 
         .library-grid {
@@ -195,7 +195,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <div style="text-align: center; color: #94a3b8; margin-top: 50px;">
+        <div style="text-align: center; color:white; margin-top: 50px;">
             <p>No books found. Try searching for a subject above or ask the MindCraft chatbot for recommendations!</p>
         </div>
     {% endif %}

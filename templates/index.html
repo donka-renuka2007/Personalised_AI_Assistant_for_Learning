@@ -4,15 +4,18 @@
     <title>Learning AI Assistant</title>
     <style>
       body{
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
-        align-items:center;
-        background-color: aquamarine;
+        background-color:lavenderblush;              /* Clearance for top fixed navbar */
+        padding-top:120px;
+        font-family:Arial;
+      }
+      .tagline{
+        font-size:18px;
+        font-style:italic;
+        margin-bottom:20px;
       }
       .container{
         display:grid;
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr 1fr 1fr 1fr;
         column-gap: 20px;
         row-gap:20px;
       }
@@ -21,15 +24,16 @@
         flex-direction:column;
         height:200px;
         width:200px;
-        background-color:aliceblue;
+        background-color:white;
+        border:1px solid #885CE6;
         cursor:pointer;
         justify-content: space-between;
         align-items:center;
         padding-top:20px;
         padding-left:20px;
         padding-right:40px;
-        border:1px solid burlywood;
         border-radius:20px;
+        box-shadow:inset 10px 10px 10px #885CE6;
       }
       .chatbot-icon,.book_library_icon,.quiz_icon,.progress_icon{
         height:100px;
@@ -40,10 +44,17 @@
         font-size:20px;
         font-style:italic;
       }
+      .main-title{
+        font-family:'Anton',sans-serif;
+      }
     </style>
   </head>
   <body>
-    <h1>Personalised AI Assistant for Learning</h1>
+    <div style="text-align:center;color:white;background-color:#885CE6;height:100px;top:0;left:0;right:0;
+    position:fixed;">
+    <h1 class="main-title">Personalised AI Assistant for Learning</h1>
+    </div>
+    <p class="tagline">Your journey to better solutions starts here. Explore our features and discover how we can help you grow.</p>
     <div class="container">
       <a href="{{ url_for('chat_bot') }}" class="card-link">
         <div class="MindCraft-AI">
