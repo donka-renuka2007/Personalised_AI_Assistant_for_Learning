@@ -1,137 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Progress - MindCraft</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='agent_chatbot.css') }}">
-    <style>
-        body {
-            background-color:white;
-            color:black;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Progress - MindCraft</title>
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-        }
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-        }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
 
-        .header h1 {
-            margin: 0;
-            color: #885CE6;
-            font-size: 26px;
-        }
+    .header h1 {
+      margin: 0;
+      color: #2563eb;
+      font-size: 24px;
+    }
 
-        .btn-back {
-            background: rgba(255, 255, 255, 0.1);
-            color: #00f0ff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: 1px solid #00f0ff;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
+    .btn-back {
+      background: #ffffff;
+      color: #2563eb;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid #2563eb;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
 
-        .btn-back:hover {
-            background: #00f0ff;
-            color: #0f172a;
-        }
+    .btn-back:hover {
+      background: #2563eb;
+      color: white;
+    }
 
-        .progress-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        .progress-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 18px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.2s;
-        }
+    .progress-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      transition: border-color 0.2s;
+    }
 
-        .progress-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(0, 240, 255, 0.4);
-        }
+    .progress-card:hover {
+      border-color: #2563eb;
+    }
 
-        .topic-title {
-            font-size: 18px;
-            font-weight: 600;
-            color:black;
-            margin: 0 0 4px 0;
-        }
+    .topic-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
 
-        .topic-label {
-            font-size: 12px;
-            color:black;
-            margin: 0;
-        }
+    .topic-label {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: bold;
+      margin: 0;
+    }
 
-        .score-badge {
-            background: rgba(0, 240, 255, 0.15);
-            color: black;
-            border: 1px solid #00f0ff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 16px;
-        }
+    .score-badge {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-        .no-data {
-            text-align: center;
-            color: #94a3b8;
-            margin-top: 50px;
-        }
-    </style>
+    .no-data {
+      text-align: center;
+      color: #64748b;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>🎉 Your Quiz Progress</h1>
-        <a href="{{ url_for('home') }}" class="btn-back">← Home</a>
-    </div>
+  <div class="header">
+    <h1>🎉 Your Quiz Progress</h1>
+    <a href="{{ url_for('home') }}" class="btn-back">← Home</a>
+  </div>
 
-    {% if history %}
-        <div class="progress-list">
-            {% for item in history %}
-                <div class="progress-card">
-                    <div>
-                        <p class="topic-label">QUIZ ATTENDED</p>
-                        <h3 class="topic-title">Topic: {{ item.topic }}</h3>
-                    </div>
-                    <div class="score-badge">
-                        Marks: {{ item.score }} / {{ item.total }}
-                    </div>
-                </div>
-            {% endfor %}
+  {% if history %}
+    <div class="progress-list">
+      {% for item in history %}
+        <div class="progress-card">
+          <div>
+            <p class="topic-label">QUIZ ATTENDED</p>
+            <h3 class="topic-title">Topic: {{ item.topic }}</h3>
+          </div>
+          <div class="score-badge">
+            Marks: {{ item.score }} / {{ item.total }}
+          </div>
         </div>
-    {% else %}
-        <div class="no-data">
-            <p>No quizzes attended yet! Take a quiz from the dashboard or upload a PDF to track your results here.</p>
-        </div>
-    {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="no-data">
+      <p>No quizzes attended yet! Take a quiz from the dashboard or upload a PDF to track your results here.</p>
+    </div>
+  {% endif %}
 </div>
 
 </body>

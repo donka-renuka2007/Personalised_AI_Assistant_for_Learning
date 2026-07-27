@@ -1,204 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Library - MindCraft</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='agent_chatbot.css') }}">
-    <style>
-        body {
-            background-color:#cbb4fc;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Library - MindCraft</title>
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px 20px;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-        }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
 
-        .header h1 {
-            margin: 0;
-            color: white;
-            font-size: 28px;
-        }
+    .header h1 {
+      margin: 0;
+      color: #1e293b;
+      font-size: 26px;
+    }
 
-        .btn-back {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: 1px solid white;;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
+    .btn-back {
+      background: #ffffff;
+      color: #2563eb;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid #2563eb;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
 
-        .btn-back:hover {
-            background: white;
-            color: #0f172a;
-        }
+    .btn-back:hover {
+      background: #2563eb;
+      color: white;
+    }
 
-        .search-box {
-            margin-bottom: 30px;
-        }
+    .search-box {
+      margin-bottom: 30px;
+    }
 
-        .search-box form {
-            display: flex;
-            gap: 10px;
-        }
+    .search-box form {
+      display: flex;
+      gap: 10px;
+    }
 
-        .search-box input[type="text"] {
-            flex-grow: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background:white;
-            color:black;
-            font-size: 15px;
-        }
+    .search-box input[type="text"] {
+      flex-grow: 1;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: #1e293b;
+      font-size: 15px;
+    }
 
-        .search-box input[type="text"]:focus {
-            outline: none;
-            border-color: #885CE6;
-        }
+    .search-box input[type="text"]:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
 
-        .search-box button {
-            padding: 12px 24px;
-            background:white;
-            border: none;
-            border-radius: 8px;
-            color: #0f172a;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
+    .search-box button {
+      padding: 12px 24px;
+      background: #2563eb;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-        .search-box button:hover {
-            background:#885CE6;
-        }
+    .search-box button:hover {
+      background: #1d4ed8;
+    }
 
-        .library-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
-        .book-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s;
-        }
+    .book-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
 
-        .book-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 240, 255, 0.4);
-        }
+    .book-card:hover {
+      transform: translateY(-4px);
+      border-color: #2563eb;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+    }
 
-        .book-card-content {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
+    .book-card-content {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
 
-        .book-card img {
-            width: 80px;
-            height: 115px;
-            object-fit: cover;
-            border-radius: 6px;
-            flex-shrink: 0;
-        }
+    .book-card img {
+      width: 80px;
+      height: 115px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+      background-color: #f1f5f9;
+    }
 
-        .book-info h3 {
-            margin: 0 0 6px 0;
-            font-size: 16px;
-            color: #ffffff;
-        }
+    .book-info h3 {
+      margin: 0 0 6px 0;
+      font-size: 15px;
+      color: #1e293b;
+    }
 
-        .book-info p.author {
-            margin: 0 0 6px 0;
-            font-size: 13px;
-            color: #00f0ff;
-        }
+    .book-info p.author {
+      margin: 0 0 6px 0;
+      font-size: 13px;
+      color: #2563eb;
+      font-weight: 500;
+    }
 
-        .book-info p.desc {
-            margin: 0;
-            font-size: 12px;
-            color: #94a3b8;
-            line-height: 1.4;
-        }
+    .book-info p.desc {
+      margin: 0;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
 
-        .book-action {
-            display: block;
-            text-align: center;
-            padding: 8px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 13px;
-            transition: background 0.2s;
-        }
+    .book-action {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background-color: #eff6ff;
+      color: #2563eb;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
 
-        .book-action:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    .book-action:hover {
+      background-color: #2563eb;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>📚 MindCraft Book Library</h1>
-        <a href="{{ url_for('chat_bot') }}" class="btn-back">← Back to Chat</a>
-    </div>
+  <div class="header">
+    <h1>📚 MindCraft Book Library</h1>
+    <a href="{{ url_for('chat_bot') }}" class="btn-back">← Back to Chat</a>
+  </div>
 
-    <!-- Search Section -->
-    <div class="search-box">
-        <form action="{{ url_for('book_library') }}" method="GET">
-            <input type="text" name="query" placeholder="Search for books, topics, or subjects (e.g., Python, AI)..." value="{{ request.args.get('query', '') }}">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+  <div class="search-box">
+    <form action="{{ url_for('book_library') }}" method="GET">
+      <input type="text" name="query" placeholder="Search for books, topics, or subjects (e.g., Python, AI)..." value="{{ request.args.get('query', '') }}">
+      <button type="submit">Search</button>
+    </form>
+  </div>
 
-    <!-- Results Display -->
-    {% if books %}
-        <div class="library-grid">
-            {% for book in books %}
-                <div class="book-card">
-                    <div class="book-card-content">
-                        <img src="{{ book.thumbnail }}" alt="Cover">
-                        <div class="book-info">
-                            <h3>{{ book.title }}</h3>
-                            <p class="author">By: {{ book.authors }}</p>
-                            <p class="desc">{{ book.description }}</p>
-                        </div>
-                    </div>
-                    <a href="{{ book.link }}" target="_blank" class="book-action">View Book</a>
-                </div>
-            {% endfor %}
+  {% if books %}
+    <div class="library-grid">
+      {% for book in books %}
+        <div class="book-card">
+          <div class="book-card-content">
+            <img src="{{ book.thumbnail }}" alt="Cover">
+            <div class="book-info">
+              <h3>{{ book.title }}</h3>
+              <p class="author">By: {{ book.authors }}</p>
+              <p class="desc">{{ book.description }}</p>
+            </div>
+          </div>
+          <a href="{{ book.link }}" target="_blank" class="book-action">View Book</a>
         </div>
-    {% else %}
-        <div style="text-align: center; color:white; margin-top: 50px;">
-            <p>No books found. Try searching for a subject above or ask the MindCraft chatbot for recommendations!</p>
-        </div>
-    {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div style="text-align: center; color: #64748b; margin-top: 50px;">
+      <p>No books found. Try searching for a subject above!</p>
+    </div>
+  {% endif %}
 </div>
 
 </body>

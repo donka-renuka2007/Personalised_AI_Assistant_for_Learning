@@ -4,20 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindCraft AI</title>
-  <meta name="author" content="Renuka Donka">
-  <!-- Favicon using Flask static directory -->
-  <link rel="icon" href="https://www.google.com/imgres?q=mindcraft%20ai&imgurl=https%3A%2F%2Frepository-images.githubusercontent.com%2F679125280%2F9a7dae67-acdd-483f-a6e2-3a690820915d&imgrefurl=https%3A%2F%2Fgithub.com%2Fmindcraft-bots%2Fmindcraft&docid=E2H_J7cVPktkGM&tbnid=_ZlKD2iwN97p-M&vet=12ahUKEwi5kdGgoOmVAxVrT2wGHdx4CSYQnPAOegUIjgEQAA..i&w=1024&h=1024&hcb=2&ved=2ahUKEwi5kdGgoOmVAxVrT2wGHdx4CSYQnPAOegUIjgEQAA" type="image/x-icon">
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='agent_chatbot.css') }}">
+  <style>
+    body {
+      background-color: #f8fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding-top: 70px;
+      padding-bottom: 80px;
+    }
+    .heading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .heading h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    #chat-box {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .chat-container {
+      display: flex;
+      width: 100%;
+    }
+    .user-message {
+      justify-content: flex-end;
+    }
+    .bot-message {
+      justify-content: flex-start;
+    }
+    .user {
+      background-color: #2563eb;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 18px 18px 2px 18px;
+      max-width: 70%;
+      font-size: 15px;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    }
+    .message-content {
+      background-color: #ffffff;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+      padding: 14px 18px;
+      border-radius: 18px 18px 18px 2px;
+      max-width: 80%;
+      font-size: 15px;
+      line-height: 1.5;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+    .input-form {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 15px 20px;
+    }
+    .input-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+    .input-container input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+    .input-container input:focus {
+      border-color: #2563eb;
+    }
+    .input-container button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 0 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .input-container button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Fixed Header -->
   <header class="heading">
-    <h1>MindCraft AI - Personalised AI Assistant For Studying</h1>
+    <h1>MindCraft AI - Personalised Study Assistant</h1>
   </header>
 
-  <!-- Chat Messages Area -->
   <main id="chat-box">
     {% for msg in chat_history %}
       {% if msg.role == 'user' %}
@@ -32,7 +131,6 @@
     {% endfor %}
   </main>
 
-  <!-- Fixed Input Bar at Bottom -->
   <footer class="input-form">
     <form method="POST" class="input-container">
       <input type="text" name="query" placeholder="Ask MindCraft AI or type a definition/quiz..." required autocomplete="off">
